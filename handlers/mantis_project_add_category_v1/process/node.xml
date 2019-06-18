@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="mantis_project_add_category" name="Mantis Project Add Category" schema_version="1.0" version="1">
+    <author>tian.mcpherson+kinetic.data@mcpherson-enterprises.com</author>
+    <description>Calls the SOAP based 'mc_project_add_category' web service, passing the username and password of the API user, and the category to be added to the project. Upon authentication, Mantis BT adds the category to the project and returns the identifier for the newly created category.</description>
+    <helpurl>http://futureware.biz/mantisconnect/doc/index.html</helpurl>
+    <visible>false</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="project_id" label="Project ID" required="true" tooltip="Identifier for the project to be updated with a new category."/>
+        <parameter id="category_name" label="Category Name" required="true" tooltip="Name of category to be added to project."/>
+    </parameters>
+    <handler name="mantis_project_add_category" version="1">
+        <infos>
+            <info name='url'>&lt;%=@info['url']%&gt;</info>
+            <info name='username'>&lt;%=@info['username']%&gt;</info>
+            <info name='password'>&lt;%=@info['password']%&gt;</info>
+        </infos>
+        <parameters>
+			<parameter name="project_id">&lt;%= @parameters['project_id'] %&gt;</parameter>
+			<parameter name="category_name">&lt;%= @parameters['category_name'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results format="xml">
+		<result name="Mantis_Project_Category_ID"></result>
+    </results>
+</taskDefinition>

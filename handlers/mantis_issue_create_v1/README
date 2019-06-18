@@ -1,0 +1,65 @@
+== mantis_issue_create_v1
+Calls the SOAP based 'mc_issue_add' web service, passing the username and password of the API user, and the details of the issue to be entered. Upon authentication, Mantis BT will create the issue ticket and return the ticket number.
+
+For more information about SOAP, see http://en.wikipedia.org/wiki/SOAP
+
+=== Parameters
+[project]
+  Project to which this issue belongs. This field is mandatory, and must match one of the Projects configured in your Mantis BT instance (case sensitive).
+[category]
+  Category this specific issue falls into.
+[summary]
+  Summary of the issue. This field is mandatory.
+[description]
+  Description of the issue. This field is mandatory.
+[priority]
+  Issue priority. Only the name is accepted, not the ID. Name must match a configured priority in your Mantis BT instance (case sensitive)
+[severity]
+  Issue severity. Only the name is accepted, not the ID. Name must match a configured severity in your Mantis BT instance (case sensitive)
+[status]
+  Issue Status. Only the name is accepted, not the ID. Name must match a configured status in your Mantis BT instance (case sensitive)
+[reporter]
+  Mantis BT username of the user who reported the issue. User must have Mantis BT account in your instance.
+[version]
+  Version identifier of the project that the issue was found in. Must be a configured version that maps to the project referenced in the 'Project Name' variable.
+[build]
+  Build identifier of the product that the issue was found in.
+[platform]
+  CPU platform of issue. (e.g. 32-bit or 64-bit)
+[os]
+  Operating System that the issue occurs in, if applicable.
+[os_build]
+  Operating system used for build pertaining to the issue.
+[reproducibility]
+  Issue Reproducibility. Only the name is accepted, not the ID. Name must match a configured reproducibility in your Mantis BT instance (case sensitive)
+[sponsorship_total]
+  Total sponsorship of issue.
+[handler]
+  Name of handler for the issue.
+[projection]
+  projection for issue.
+[eta]
+  estimated time of arrival for issue.
+[resolution]
+  Projection for the scope of the work associated with resolving the issue. Only the name is accepted, not the ID. Name must match a configured projection in your Mantis BT instance (case sensitive)
+[fixed_in_version]
+  Estimated Time of Arrival. Only the name is accepted, not the ID. Name must match a configured ETA in your Mantis BT instance (case sensitive)
+[steps_to_reproduce]
+  Under what conditions and circumstances can this bug be reproduced.
+[add_info]
+  Additional information.
+[target_version]
+  Target Version
+
+
+=== Details
+This handler utilizes a sample SoapEcho web application that is included within
+the resources directory of the handler package.  The sample SoapEcho web
+application can be deployed into a Servlet container such as Tomcat and includes
+both source and compiled code.  The web application contains a single Class
+that is exposed as the "EchoService" web service.  The SoapEcho web application
+wsdl file can be displayed via the http://HOST:PORT/SoapEcho/ws/EchoService?wsdl
+url.
+
+For more information on how to use Savon, the Ruby SOAP library used by this
+handler, see http://rubiii.github.com/savon/.

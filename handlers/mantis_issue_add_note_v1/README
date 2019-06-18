@@ -1,0 +1,32 @@
+== mantis_issue_add_note
+Calls the SOAP based 'mc_issue_note_add' web service,
+to add a note to the specified issue in Mantis BT. Returns an integer
+identifier for the newly added note.
+
+For more information about SOAP, see http://en.wikipedia.org/wiki/SOAP
+
+=== Parameters
+[issue_id]
+  Desired Mantis issue identification number.
+[note_text]
+  Contents of the actually note.
+[view_state]
+  Who can access and read this note I.E. public or private.
+
+==== Sample Configuration
+issue_id::             0000001
+note_text::            This note was sent from the KD Task Handler. Congrats!!
+view_state::           Public
+
+
+=== Details
+This handler utilizes a sample SoapEcho web application that is included within
+the resources directory of the handler package.  The sample SoapEcho web
+application can be deployed into a Servlet container such as Tomcat and includes
+both source and compiled code.  The web application contains a single Class
+that is exposed as the "EchoService" web service.  The SoapEcho web application
+wsdl file can be displayed via the http://HOST:PORT/SoapEcho/ws/EchoService?wsdl
+url.
+
+For more information on how to use Savon, the Ruby SOAP library used by this
+handler, see http://rubiii.github.com/savon/.

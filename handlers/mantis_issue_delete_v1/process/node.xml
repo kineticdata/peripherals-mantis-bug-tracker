@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="mantis_issue_delete" name="Mantis Issue Delete" schema_version="1.0" version="1">
+    <author>tian.mcpherson+kinetic.data@mcpherson-enterprises.com</author>
+    <description>Calls the SOAP based 'mc_issue_delete' web service, passing the username and password of the API user, and the identifier of the issue to be deleted. Upon authentication, Mantis BT will delete the issue whose identifier was provided, return a boolean indicator of success (true) or failure (false)</description>
+    <helpurl>http://futureware.biz/mantisconnect/doc/index.html</helpurl>
+    <visible>false</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="issue_id" label="Issue Identifier" required="true" tooltip="Identifier of the issue to be deleted."/>
+    </parameters>
+    <handler name="mantis_issue_delete" version="1">
+        <infos>
+            <info name='url'>&lt;%=@info['url']%&gt;</info>
+            <info name='username'>&lt;%=@info['username']%&gt;</info>
+            <info name='password'>&lt;%=@info['password']%&gt;</info>
+        </infos>
+        <parameters>
+			<parameter name="issue_id">&lt;%= @parameters['issue_id'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results format="xml">
+		<result name="Mantis_Issue_Delete_Success"></result>
+    </results>
+</taskDefinition>

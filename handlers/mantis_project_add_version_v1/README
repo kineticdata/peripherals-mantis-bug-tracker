@@ -1,0 +1,37 @@
+== mantis_project_add_version_v1
+Calls the SOAP based 'mc_project_version_add' web service, passing the username and password of the API user, and the version to be added to the project. Upon authentication, Mantis BT adds the version to the project and returns the identifier for the newly created version.
+
+For more information about SOAP, see http://en.wikipedia.org/wiki/SOAP
+
+=== Parameters
+[project_id]
+  Identifier for the project to be updated with a new version.
+[version_name]
+  Name of version to be added to project.
+[version_description]
+  Description of version to be added to project.
+[released]
+  Has this version been released?
+[obsolete]
+  Indication wether version is obsolete- True or false
+
+==== Sample Configuration
+Greeting::             Hola
+Name::                 William Robert
+
+=== Results
+[Message]
+  The complete greeting returned by the SOAP service.  This will be in a format
+  similar to: {Greeting} {Name}!
+
+=== Details
+This handler utilizes a sample SoapEcho web application that is included within
+the resources directory of the handler package.  The sample SoapEcho web
+application can be deployed into a Servlet container such as Tomcat and includes
+both source and compiled code.  The web application contains a single Class
+that is exposed as the "EchoService" web service.  The SoapEcho web application
+wsdl file can be displayed via the http://HOST:PORT/SoapEcho/ws/EchoService?wsdl
+url.
+
+For more information on how to use Savon, the Ruby SOAP library used by this
+handler, see http://rubiii.github.com/savon/.

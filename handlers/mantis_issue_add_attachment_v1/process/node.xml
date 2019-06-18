@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="mantis_issue_add_attachment" name="Mantis Issue Add Attachment" schema_version="1.0" version="1">
+    <author>tian.mcpherson+kinetic.data@mcpherson-enterprises.com</author>
+    <description>Calls the SOAP based 'mc_issue_attachment_add' web service to add an attachment to the Issue with the specified identifier. Returns the identifier of the newly added attachment</description>
+    <helpurl>http://futureware.biz/mantisconnect/doc/index.html</helpurl>
+    <visible>false</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="issue_id" label="Issue Identifier" required="true" tooltip="Identifier of the issue receiving the attachment."/>
+        <parameter id="file_path" label="Source File Path" required="true" tooltip="Path to the source of the file to be uploaded. Be mindful of what the real 'source' of the file is. It may not necessarily be the end-user's computer (i.e. it could be a Kinetic SR record)."/>
+    </parameters>
+    <handler name="mantis_issue_add_attachment" version="1">
+        <infos>
+            <info name='url'>&lt;%=@info['url']%&gt;</info>
+            <info name='username'>&lt;%=@info['username']%&gt;</info>
+            <info name='password'>&lt;%=@info['password']%&gt;</info>
+        </infos>
+        <parameters>
+			<parameter name="issue_id">&lt;%= @parameters['issue_id'] %&gt;</parameter>
+			<parameter name="file_path">&lt;%= @parameters['file_path'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results format="xml">
+		<result name="Mantis_Attachment_ID"></result>
+    </results>
+</taskDefinition>

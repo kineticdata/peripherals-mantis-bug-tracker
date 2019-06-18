@@ -1,0 +1,32 @@
+== mantis_issue_add_tag_v1
+Calls the SOAP based 'mc_issue_set_tags' web service,
+to add a tag to the specified issue in Mantis BT.
+Returns a boolean indicator of success (true) or failure (false).
+
+For more information about SOAP, see http://en.wikipedia.org/wiki/SOAP
+
+=== Parameters
+[issue_id]
+  Identifier of the issue that a tag must be added to.
+[tag_name]
+  Name for the tag to be added to the issue. This must match with the tag name in your Mantis BT instance (case sensitive).
+[tag_id]
+  Identifier for the tag to be added. This must match with the identifier in your Mantis BT instance.
+
+==== Sample Configuration
+issue_id::             000001
+tag_name::             Task Handler
+tag_id::               3
+
+
+=== Details
+This handler utilizes a sample SoapEcho web application that is included within
+the resources directory of the handler package.  The sample SoapEcho web
+application can be deployed into a Servlet container such as Tomcat and includes
+both source and compiled code.  The web application contains a single Class
+that is exposed as the "EchoService" web service.  The SoapEcho web application
+wsdl file can be displayed via the http://HOST:PORT/SoapEcho/ws/EchoService?wsdl
+url.
+
+For more information on how to use Savon, the Ruby SOAP library used by this
+handler, see http://rubiii.github.com/savon/.

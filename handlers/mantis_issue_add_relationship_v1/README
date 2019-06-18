@@ -1,0 +1,34 @@
+== mantis_issue_add_relationship_v1
+Calls the SOAP based 'mc_issue_relationship_add' web service,
+passing the username and password of the API user,
+and the details of the issue relationship to be added.
+Upon authentication, Mantis BT will relate the issues and return the
+relationship identifier.
+
+For more information about SOAP, see http://en.wikipedia.org/wiki/SOAP
+
+=== Parameters
+[issue_id]
+  Desired Mantis issue identification number.
+[relationship_type_id]
+  Type of relationship to be added.
+[relationship_target_id]
+  Identifier of the issue that the 'Issue ID' above will have a relationship with.
+
+==== Sample Configuration
+Issue ID::                             10
+relationship_type_id::                 Related To
+relationship_target_id::               7
+
+
+=== Details
+This handler utilizes a sample SoapEcho web application that is included within
+the resources directory of the handler package.  The sample SoapEcho web
+application can be deployed into a Servlet container such as Tomcat and includes
+both source and compiled code.  The web application contains a single Class
+that is exposed as the "EchoService" web service.  The SoapEcho web application
+wsdl file can be displayed via the http://HOST:PORT/SoapEcho/ws/EchoService?wsdl
+url.
+
+For more information on how to use Savon, the Ruby SOAP library used by this
+handler, see http://rubiii.github.com/savon/.

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="mantis_project_add_version" name="Mantis Project Add Version" schema_version="1.0" version="1">
+    <author>tian.mcpherson+kinetic.data@mcpherson-enterprises.com</author>
+    <description>Calls the SOAP based 'mc_project_version_add' web service, passing the username and password of the API user, and the version to be added to the project. Upon authentication, Mantis BT adds the version to the project and returns the identifier for the newly created version.</description>
+    <helpurl>http://futureware.biz/mantisconnect/doc/index.html</helpurl>
+    <visible>false</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="project_id" label="Project ID" required="true" tooltip="Identifier for the project to be updated with a new version."/>
+        <parameter id="version_name" label="Version Name" required="true" tooltip="Name of version to be added to project."/>
+        <parameter id="version_description" label="Version Description" required="false" tooltip="Description of version to be added to project."/>
+        <parameter id="released" label="Released" required="false" menu = "True, False" tooltip="Has this version been released?"/>
+        <parameter id="obsolete" label="Obsolete" required="false" menu = "True, False" tooltip="Is this version obsolete?"/>
+    </parameters>
+    <handler name="mantis_project_add_version" version="1">
+        <infos>
+            <info name='url'>&lt;%=@info['url']%&gt;</info>
+            <info name='username'>&lt;%=@info['username']%&gt;</info>
+            <info name='password'>&lt;%=@info['password']%&gt;</info>
+        </infos>
+        <parameters>
+			<parameter name="project_id">&lt;%= @parameters['project_id'] %&gt;</parameter>
+			<parameter name="version_name">&lt;%= @parameters['version_name'] %&gt;</parameter>
+			<parameter name="version_description">&lt;%= @parameters['version_description'] %&gt;</parameter>
+			<parameter name="released">&lt;%= @parameters['released'] %&gt;</parameter>
+			<parameter name="obsolete">&lt;%= @parameters['obsolete'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results format="xml">
+		<result name="Mantis_Project_Version_ID"></result>
+    </results>
+</taskDefinition>

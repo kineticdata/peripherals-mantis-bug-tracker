@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskInfo version="1.0">
+  <info name="url" description="The URL to the Mantis BT installation (e.g. http://myhost.com/mantis).">http://myhost.com/mantis</info>
+  <info name="username" description="The username for the API user account (e.g. mantis_admin).">mantis_admin</info>
+  <info name="password" type="encrypted" description="The password associated with the API user account."></info>
+</taskInfo>

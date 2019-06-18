@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="mantis_issue_add_tag" name="Mantis Issue Add Tag" schema_version="1.0" version="1">
+    <author>tian.mcpherson+kinetic.data@mcpherson-enterprises.com</author>
+    <description>Calls the SOAP based 'mc_issue_set_tags' web service, to add a tag to the specified issue in Mantis BT. Returns a boolean indicator of success (true) or failure (false).</description>
+    <helpurl>http://futureware.biz/mantisconnect/doc/index.html</helpurl>
+    <visible>false</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="issue_id" label="Issue Identifier" required="true" tooltip="Identifier of the issue that a tag must be added to."/>
+        <parameter id="tag_name" label="Tag" required="true" tooltip="Name for the tag to be added to the issue. This must match with the tag name in your Mantis BT instance (case sensitive)"/>
+        <parameter id="tag_id" label="Tag Identifier" required="true" tooltip="Identifier for the tag to be added. This must match with the identifier in your Mantis BT instance."/>
+    </parameters>
+    <handler name="mantis_issue_add_tag" version="1">
+        <infos>
+            <info name='url'>&lt;%=@info['url']%&gt;</info>
+            <info name='username'>&lt;%=@info['username']%&gt;</info>
+            <info name='password'>&lt;%=@info['password']%&gt;</info>
+        </infos>
+        <parameters>
+			<parameter name="issue_id">&lt;%= @parameters['issue_id'] %&gt;</parameter>
+			<parameter name="tag_name">&lt;%= @parameters['tag_name'] %&gt;</parameter>
+			<parameter name="tag_id">&lt;%= @parameters['tag_id'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results format="xml">
+		<result name="Mantis_Issue_Tag_Added"></result>
+    </results>
+</taskDefinition>

@@ -1,0 +1,24 @@
+== mantis_issue_update_note_v1
+Calls the SOAP based 'mc_issue_note_update' web service, to update the note with the specified identifier in Mantis BT. Returns a boolean value indicating if the update was successful (true) or unsuccessful (false)
+
+For more information about SOAP, see http://en.wikipedia.org/wiki/SOAP
+
+=== Parameters
+[note_id]
+  Identifier of the note to be updated.
+[note_text]
+  Updated note text to replace current note text.
+[view_state]
+  Whether others can see it or not.
+
+=== Details
+This handler utilizes a sample SoapEcho web application that is included within
+the resources directory of the handler package.  The sample SoapEcho web
+application can be deployed into a Servlet container such as Tomcat and includes
+both source and compiled code.  The web application contains a single Class
+that is exposed as the "EchoService" web service.  The SoapEcho web application
+wsdl file can be displayed via the http://HOST:PORT/SoapEcho/ws/EchoService?wsdl
+url.
+
+For more information on how to use Savon, the Ruby SOAP library used by this
+handler, see http://rubiii.github.com/savon/.

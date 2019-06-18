@@ -1,0 +1,33 @@
+== mantis_project_create_v1
+Calls the SOAP based 'mc_project_add' web service, passing the username and password of the API user, and the details of the project to be added. Upon authentication, Mantis BT will create the project and return the project identifier.
+
+For more information about SOAP, see http://en.wikipedia.org/wiki/SOAP
+
+=== Parameters
+[name]
+  Name of the project to be created.
+[status]
+  Status of project.  i.e. Development, Release, Stable, Obsolete
+[enabled]
+  Whether this project should be available to accept issues.
+[view_state]
+  Whether others can have access to this project or not.
+[access_min]
+  Minimum role that a user must have in order to access this project.
+  Viewer, Reporter, Updater, Developer, Manager, Administrator
+[description]
+  Description of this project.
+[inherit_global]
+  Whether this project inherits the global categories (i.e. the ones assigned to 'All Projects').
+
+=== Details
+This handler utilizes a sample SoapEcho web application that is included within
+the resources directory of the handler package.  The sample SoapEcho web
+application can be deployed into a Servlet container such as Tomcat and includes
+both source and compiled code.  The web application contains a single Class
+that is exposed as the "EchoService" web service.  The SoapEcho web application
+wsdl file can be displayed via the http://HOST:PORT/SoapEcho/ws/EchoService?wsdl
+url.
+
+For more information on how to use Savon, the Ruby SOAP library used by this
+handler, see http://rubiii.github.com/savon/.

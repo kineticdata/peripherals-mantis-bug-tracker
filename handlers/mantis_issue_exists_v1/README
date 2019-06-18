@@ -1,0 +1,21 @@
+== mantis_issue_exists_v1
+Calls the SOAP based 'mc_issue_exists' web service, to check if the specified Issue exists in your Mantis BT instance.
+Returns a boolean indicator that it exists (true) or doesn't exist (false).
+
+For more information about SOAP, see http://en.wikipedia.org/wiki/SOAP
+
+=== Parameters
+[issue_id]
+  Identifier of the issue to be evaluated for existence.
+
+=== Details
+This handler utilizes a sample SoapEcho web application that is included within
+the resources directory of the handler package.  The sample SoapEcho web
+application can be deployed into a Servlet container such as Tomcat and includes
+both source and compiled code.  The web application contains a single Class
+that is exposed as the "EchoService" web service.  The SoapEcho web application
+wsdl file can be displayed via the http://HOST:PORT/SoapEcho/ws/EchoService?wsdl
+url.
+
+For more information on how to use Savon, the Ruby SOAP library used by this
+handler, see http://rubiii.github.com/savon/.

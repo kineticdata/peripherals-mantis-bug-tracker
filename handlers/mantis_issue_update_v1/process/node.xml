@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="mantis_issue_update" name="Mantis Issue Update" schema_version="1.0" version="1">
+    <author>tian.mcpherson+kinetic.data@mcpherson-enterprises.com</author>
+    <description>Calls the SOAP based 'mc_issue_update' web service, passing the username and password of the API user, and the details of the issue to be entered. Upon authentication, Mantis BT will update the referenced issue ticket and return a boolean indicator of success(true) or failure (false).</description>
+    <helpurl>http://futureware.biz/mantisconnect/doc/index.html</helpurl>
+    <visible>false</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="issue_id" label="Issue Identifier" required="true" tooltip="Identifier of the issue to be updated."/>
+        <parameter id="project" label="Project Name" required="true" tooltip="Project to which this issue belongs. This field is mandatory, and must match one of the Projects configured in your Mantis BT instance (case sensitive)."/>
+        <parameter id="category" label="Category" required="true" tooltip="Name of category to which the issue belongs. This field is mandatory and must match one of the configured categories in your Mantis BT instance (case sensitive)."/>
+        <parameter id="summary" label="Summary" required="true" tooltip="Summary of the issue. This field is mandatory."/>
+        <parameter id="description" label="Description" required="true" tooltip="Description of the issue. This field is mandatory."/>
+        <parameter id="priority" label="Priority" required="false" tooltip="Issue priority. Only the name is accepted, not the ID. Name must match a configured priority in your Mantis BT instance (case sensitive)"/>
+        <parameter id="severity" label="Severity" required="false" tooltip="Issue severity. Only the name is accepted, not the ID. Name must match a configured severity in your Mantis BT instance (case sensitive)"/>
+        <parameter id="status" label="Issue Status" required="false" tooltip="Issue Status. Only the name is accepted, not the ID. Name must match a configured status in your Mantis BT instance (case sensitive)"/>
+        <parameter id="reporter" label="Reported By" required="false" tooltip="Username of the user who reported the issue. User must have Mantis BT account in your instance."/>
+        <parameter id="version" label="Product Version" required="false" tooltip="Version identifier of the project that the issue was found in. Must be a configured version that maps to the project referenced in the 'Project Name' variable"/>
+        <parameter id="build" label="Product Build" required="false" tooltip="Build identifier of the product that the issue was found in."/>
+        <parameter id="platform" label="OS Platform" required="false" tooltip="(e.g. 32-bit or 64-bit)"/>
+        <parameter id="os" label="OS" required="false" tooltip="Operating System that the issue occurs in, if applicable."/>
+        <parameter id="os_build" label="OS Build" required="false" tooltip="Version / Build number for the OS indicated in the OS parameter"/>
+        <parameter id="reproducibility" label="Ability to Reproduce" required="false" tooltip="Issue Reproducibility. Only the name is accepted, not the ID. Name must match a configured reproducibility in your Mantis BT instance (case sensitive)"/>
+        <parameter id="sponsorship_total" label="Sponsorship Total" required="false" tooltip="Total sponsorships for this issue."/>
+        <parameter id="handler" label="Assigned To" required="false" tooltip="Username of user handling the issue."/>
+        <parameter id="projection" label="Projection" required="false" tooltip="Projection for the scope of the work associated with resolving the issue. Only the name is accepted, not the ID. Name must match a configured projection in your Mantis BT instance (case sensitive)"/>
+        <parameter id="eta" label="ETA" required="false" tooltip="Estimated Time of Arrival. Only the name is accepted, not the ID. Name must match a configured ETA in your Mantis BT instance (case sensitive)"/>
+        <parameter id="resolution" label="Resolution" required="false" tooltip="Issue Resolution. Only the name is accepted, not the ID. Name must match a configured resolution in your Mantis BT instance (case sensitive)"/>
+        <parameter id="fixed_in_version" label="Fixed in Version" required="false" tooltip="The system version that the issue is fixed in."/>
+        <parameter id="steps_to_reproduce" label="Steps to Reproduce" required="false" tooltip="Steps to reproduce the issue."/>
+        <parameter id="add_info" label="Additional Information" required="false" tooltip="Additional information about the issue."/>
+        <parameter id="target_version" label="Target Version" required="false" tooltip="The version of the system that the fix is planned for."/>
+    </parameters>
+    <handler name="mantis_issue_update" version="1">
+        <infos>
+            <info name='url'>&lt;%=@info['url']%&gt;</info>
+            <info name='username'>&lt;%=@info['username']%&gt;</info>
+            <info name='password'>&lt;%=@info['password']%&gt;</info>
+        </infos>
+        <parameters>
+			<parameter name="issue_id">&lt;%= @parameters['issue_id'] %&gt;</parameter>
+			<parameter name="project">&lt;%= @parameters['project'] %&gt;</parameter>
+			<parameter name="category">&lt;%= @parameters['category'] %&gt;</parameter>
+			<parameter name="summary">&lt;%= @parameters['summary'] %&gt;</parameter>
+			<parameter name="description">&lt;%= @parameters['description'] %&gt;</parameter>
+			<parameter name="priority">&lt;%= @parameters['priority'] %&gt;</parameter>
+			<parameter name="severity">&lt;%= @parameters['severity'] %&gt;</parameter>
+			<parameter name="status">&lt;%= @parameters['status'] %&gt;</parameter>
+			<parameter name="reporter">&lt;%= @parameters['reporter'] %&gt;</parameter>
+			<parameter name="version">&lt;%= @parameters['version'] %&gt;</parameter>
+			<parameter name="build">&lt;%= @parameters['build'] %&gt;</parameter>
+			<parameter name="platform">&lt;%= @parameters['platform'] %&gt;</parameter>
+			<parameter name="os">&lt;%= @parameters['os'] %&gt;</parameter>
+			<parameter name="os_build">&lt;%= @parameters['os_build'] %&gt;</parameter>
+			<parameter name="reproducibility">&lt;%= @parameters['reproducibility'] %&gt;</parameter>
+			<parameter name="sponsorship_total">&lt;%= @parameters['sponsorship_total'] %&gt;</parameter>
+			<parameter name="handler">&lt;%= @parameters['handler'] %&gt;</parameter>
+			<parameter name="projection">&lt;%= @parameters['projection'] %&gt;</parameter>
+			<parameter name="eta">&lt;%= @parameters['eta'] %&gt;</parameter>
+			<parameter name="resolution">&lt;%= @parameters['resolution'] %&gt;</parameter>
+			<parameter name="fixed_in_version">&lt;%= @parameters['fixed_in_version'] %&gt;</parameter>
+			<parameter name="steps_to_reproduce">&lt;%= @parameters['steps_to_reproduce'] %&gt;</parameter>
+			<parameter name="add_info">&lt;%= @parameters['add_info'] %&gt;</parameter>
+			<parameter name="target_version">&lt;%= @parameters['target_version'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results format="xml">
+		<result name="Mantis_Issue_Update_Successful"></result>
+    </results>
+</taskDefinition>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="mantis_issue_check_in" name="Mantis Issue Check In" schema_version="1.0" version="1">
+    <author>tian.mcpherson+kinetic.data@mcpherson-enterprises.com</author>
+    <description>Calls the SOAP based 'mc_issue_checkin' web service, to notify Mantis BT of a check in for the issue with the specified ID. Returns a boolean indicator that the check in was successful (true) or not successful (false)</description>
+    <helpurl>http://futureware.biz/mantisconnect/doc/index.html</helpurl>
+    <visible>false</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="issue_id" label="Issue Identifier" required="true" tooltip="Identifier of the issue being checked in."/>
+        <parameter id="comment" label="Comment" required="false" tooltip="Comment to add to the issue."/>
+        <parameter id="fixed" label="Fixed indicator" required="false" menu="True, False" tooltip="Indicator of whether the issue has been fixed or not."/>
+    </parameters>
+    <handler name="mantis_issue_check_in" version="1">
+        <infos>
+            <info name='url'>&lt;%=@info['url']%&gt;</info>
+            <info name='username'>&lt;%=@info['username']%&gt;</info>
+            <info name='password'>&lt;%=@info['password']%&gt;</info>
+        </infos>
+        <parameters>
+			<parameter name="issue_id">&lt;%= @parameters['issue_id'] %&gt;</parameter>
+			<parameter name="comment">&lt;%= @parameters['comment'] %&gt;</parameter>
+			<parameter name="fixed">&lt;%= @parameters['fixed'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results format="xml">
+		<result name="Mantis_Check_In_Success"></result>
+    </results>
+</taskDefinition>

@@ -1,0 +1,22 @@
+== mantis_project_add_category_v1
+Calls the SOAP based 'mc_project_add_category' web service, passing the username and password of the API user, and the category to be added to the project. Upon authentication, Mantis BT adds the category to the project and returns the identifier for the newly created category.
+
+For more information about SOAP, see http://en.wikipedia.org/wiki/SOAP
+
+=== Parameters
+[project_id]
+  Identifier for the project to be updated with a new category.
+[category_name]
+  Name of category to be added to project.
+
+=== Details
+This handler utilizes a sample SoapEcho web application that is included within
+the resources directory of the handler package.  The sample SoapEcho web
+application can be deployed into a Servlet container such as Tomcat and includes
+both source and compiled code.  The web application contains a single Class
+that is exposed as the "EchoService" web service.  The SoapEcho web application
+wsdl file can be displayed via the http://HOST:PORT/SoapEcho/ws/EchoService?wsdl
+url.
+
+For more information on how to use Savon, the Ruby SOAP library used by this
+handler, see http://rubiii.github.com/savon/.

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="mantis_issue_add_note" name="Mantis Issue Add Note" schema_version="1.0" version="1">
+    <author>tian.mcpherson+kinetic.data@mcpherson-enterprises.com</author>
+    <description>Calls the SOAP based 'mc_issue_note_add' web service, to add a note to the specified issue in Mantis BT. Returns an integer identifier for the newly added note.</description>
+    <helpurl>http://futureware.biz/mantisconnect/doc/index.html</helpurl>
+    <visible>false</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="issue_id" label="Issue Identifier" required="true" tooltip="Identifier of the issue that a note must be added to."/>
+        <parameter id="note_text" label="Note" required="true" tooltip="Note to be added to the issue."/>
+        <parameter id="view_state" label="Issue Identifier" required="true" menu="Public, Private" tooltip="Whether others can see it or not."/>
+    </parameters>
+    <handler name="mantis_issue_add_note" version="1">
+        <infos>
+            <info name='url'>&lt;%=@info['url']%&gt;</info>
+            <info name='username'>&lt;%=@info['username']%&gt;</info>
+            <info name='password'>&lt;%=@info['password']%&gt;</info>
+        </infos>
+        <parameters>
+			<parameter name="issue_id">&lt;%= @parameters['issue_id'] %&gt;</parameter>
+			<parameter name="note_text">&lt;%= @parameters['note_text'] %&gt;</parameter>
+			<parameter name="view_state">&lt;%= @parameters['view_state'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results format="xml">
+		<result name="Mantis_Issue_Note_ID"></result>
+    </results>
+</taskDefinition>

@@ -1,0 +1,46 @@
+== mantis_fetch_issue_data_v1
+Calls the SOAP based 'mc_issue_get' web service, passing the username and password
+of the API user, and the identifier of the issue to be retrieved. Upon authentication,
+Mantis BT will return the details of the issue whose identifier was provided, which will
+be provided by this handler as a JSON string
+
+For more information about SOAP, see http://en.wikipedia.org/wiki/SOAP
+
+=== Parameters
+[issue_id]
+  The I.D. of the issue.
+
+==== Sample Configuration
+Issue I.D.::             0000001
+
+=== Results
+[Mantis_Issue_Data]
+  "{\"id\":\"25\",\"view_state\":{\"id\":\"10\",\"name\":\"public\",\"type\":\"ns1:ObjectRef\"},
+  \"last_updated\":\"2015-07-18T08:48:15+06:00\",\"project\":{\"id\":\"1\",\"name\":\"AD Test Project\",
+  \"type\":\"ns1:ObjectRef\"},\"category\":\"Generated From Task Engine\",\"priority\":{\"id\":\"30\",
+  \"name\":\"normal\",\"type\":\"ns1:ObjectRef\"},\"severity\":{\"id\":\"50\",\"name\":\"minor\",\"type\":\"ns1:ObjectRef\"},
+  \"status\":{\"id\":\"50\",\"name\":\"assigned\",\"type\":\"ns1:ObjectRef\"},\"reporter\":{\"id\":\"1\",
+  \"name\":\"mantis_admin\",\"email\":\"tian.mcpherson@mcpherson-enterprises.com\",\"type\":\"ns1:AccountData\"},
+  \"summary\":\"Test Issue from KD Task Handler\",\"version\":\"1.0\",\"build\":\"32\",\"platform\":\"64-bit\",
+  \"os\":\"Windows 8.1\",\"os_build\":\"unknown\",\"reproducibility\":{\"id\":\"70\",\"name\":\"have not tried\",
+  \"type\":\"ns1:ObjectRef\"},\"date_submitted\":\"2015-07-18T08:48:15+06:00\",\"sponsorship_total\":\"0\",
+  \"handler\":{\"id\":\"1\",\"name\":\"mantis_admin\",\"email\":\"tian.mcpherson@mcpherson-enterprises.com\",
+  \"type\":\"ns1:AccountData\"},\"projection\":{\"id\":\"10\",\"name\":\"none\",\"type\":\"ns1:ObjectRef\"},
+  \"eta\":{\"id\":\"10\",\"name\":\"none\",\"type\":\"ns1:ObjectRef\"},\"resolution\":{\"id\":\"10\",\"name\":\"open\",
+  \"type\":\"ns1:ObjectRef\"},\"fixed_in_version\":\"unknown\",\"target_version\":\"1.02\",
+  \"description\":\"This is a test from the MantisIssueCreate Task Handler. Feel free to close this immediately.\",
+  \"steps_to_reproduce\":\"1. Find the problem 2. Fix it\",\"attachments\":{\"array_type\":\"ns1:AttachmentData[0]\",
+  \"type\":\"SOAP-ENC:Array\"},\"due_date\":null,\"monitors\":{\"array_type\":\"ns1:AccountData[0]\",\"type\":\"SOAP-ENC:Array\"},
+  \"sticky\":false,\"tags\":{\"array_type\":\"ns1:ObjectRef[0]\",\"type\":\"SOAP-ENC:Array\"},\"type\":\"ns1:IssueData\"}"
+
+=== Details
+This handler utilizes a sample SoapEcho web application that is included within
+the resources directory of the handler package.  The sample SoapEcho web
+application can be deployed into a Servlet container such as Tomcat and includes
+both source and compiled code.  The web application contains a single Class
+that is exposed as the "EchoService" web service.  The SoapEcho web application
+wsdl file can be displayed via the http://HOST:PORT/SoapEcho/ws/EchoService?wsdl
+url.
+
+For more information on how to use Savon, the Ruby SOAP library used by this
+handler, see http://rubiii.github.com/savon/.
