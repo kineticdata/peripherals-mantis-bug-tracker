@@ -4,5 +4,6 @@ categories:
 - Service Management
 - Ticketing
 display-name: Mantis Bug Tracker
-manufacture: 
+manufacturer: Mantis 
 product: MantisBT
+description: Mantis Bug Tracker is a free and open source, web-based bug tracking system. The most common use of MantisBT is to track software defects.
